@@ -11,7 +11,7 @@
 
   onMount(async () => {
     try {
-      const response = await fetch('http://jjhvjvui.top/api/form/onboarding/español');
+      const response = await fetch('https://jjhvjvui.top/api/form/onboarding/español');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -59,7 +59,7 @@
         respuestas: responses
       };
 
-      const response = await fetch('http://jjhvjvui.top/api/saveResponses', {
+      const response = await fetch('https://jjhvjvui.top/api/saveResponses', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -91,7 +91,7 @@
         estado: 'cuestionariocompletado'
       };
 
-      const response = await fetch('http://jjhvjvui.top/api/user/update', {
+      const response = await fetch('https://jjhvjvui.top/api/user/update', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
