@@ -8,6 +8,7 @@
   let responses = [];
   let userId = '';
   let isLoading = true; // Variable para indicar si se está cargando la información
+  let errorMessage = ''; // Variable para mostrar mensajes de error
 
   onMount(async () => {
     try {
@@ -34,6 +35,24 @@
   });
 
   function goToNextQuestion() {
+    // Verificar si se ha seleccionado alguna respuesta
+    if (responses[currentQuestionIndex].respuesta === '') {
+      alert('Por favor selecciona una respuesta.');
+      return;
+    }
+
+    // Validar que la hora de desayuno no sea anterior a la hora de despertar
+    const wakeUpResponse = responses.find(response => response.id === 'pregunta_id05'); // Cambia 'pregunta_id05' al ID real de la pregunta de despertar
+    const breakfastResponse = responses.find(response => response.id === 'pregunta_id06'); // Cambia 'pregunta_id06' al ID real de la pregunta de desayuno
+
+    if (wakeUpResponse && breakfastResponse && wakeUpResponse.respuesta && breakfastResponse.respuesta) {
+      if (wakeUpResponse.respuesta > breakfastResponse.respuesta) {
+        errorMessage = 'La hora de desayuno no puede ser anterior a la hora de despertar.';
+        return;
+      }
+    }
+
+    errorMessage = ''; // Limpiar el mensaje de error si la validación pasa
     if (currentQuestionIndex < formData.preguntas.length - 1) {
       currentQuestionIndex++;
     }
@@ -111,9 +130,10 @@
   }
 </script>
 
-<div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-700 to-black">
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-t from-black via-black to-purple-700">
   <div class="max-w-md w-full px-4">
-    <img src={logo} alt="Logo" class="absolute top-0 left-0 mt-4 ml-4 w-12 h-auto" />
+    <!-- <img src={logo} alt="Logo" class="absolute top-0 left-0 mt-4 ml-4 w-12 h-auto" /> -->
+    <h1 class="text-3xl text-white font-bold text-center mt-8 mb-4">Déjame conocerte para ayudarte</h1>
 
     {#if isLoading}
       <p class="text-white text-center mt-4">Cargando...</p>
@@ -129,7 +149,7 @@
                     type="radio" 
                     name={formData.preguntas[currentQuestionIndex].id} 
                     value={opcion} 
-                    class="mr-2"
+                    class="mr-2 appearance-none rounded-full w-4 h-4 border-2 border-green-500 checked:bg-green-500 checked:border-transparent focus:outline-none"
                     on:change={updateResponse}
                     checked={responses[currentQuestionIndex].respuesta === opcion}
                   />
@@ -153,6 +173,9 @@
               />
             {/if}
           </div>
+          {#if errorMessage}
+            <p class="text-red-500 mb-4">{errorMessage}</p>
+          {/if}
           <div class="flex justify-center">
             {#if currentQuestionIndex > 0}
               <button type="button" on:click={goToPreviousQuestion} class="bg-purple-500 text-white px-4 py-2 rounded mr-2">
@@ -168,7 +191,7 @@
           
           {#if currentQuestionIndex === formData.preguntas.length - 1}
             <div class="flex justify-center mt-4">
-              <button type="button" on:click={sendResponsesToAPI} class="bg-green-500 text-white px-4 py-2 rounded">
+              <button type="button" on:click={sendResponsesToAPI} class="bg-[#32CD32] text-white px-4 py-2 rounded">
                 Enviar respuestas
               </button>
             </div>
@@ -180,3 +203,7 @@
     {/if}
   </div>
 </div>
+
+<style>
+  /* Estilos personalizados */
+</style>

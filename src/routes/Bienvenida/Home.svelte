@@ -5,18 +5,18 @@
 
 <div class="flex items-center justify-center min-h-screen bg-gradient-to-t from-black via-black to-purple-700">
   <div class="max-w-md w-full px-4 text-center">
-    <!-- <img src={logo} alt="Logo" class="absolute top-0 left-0 mt-4 ml-4 w-12 h-auto" /> -->
+    <img src={logo} alt="Logo" class="absolute top-0 left-0 mt-4 ml-4 w-12 h-auto" />
     <img
-      src="https://img.icons8.com/emoji/96/000000/lungs-emoji.png"
+      src="https://img.icons8.com/color/96/lol--v1.png"
       alt="Imagen"
       class="w-24 h-auto rounded-full mb-4 mx-auto"
     />
     <h1 class="text-4xl font-bold text-white mb-4">
-      ¡Gracias!, hasta el infinito y mas alla.
+        !Gracias por visitarnos prueba a Olya.Ai! 
     </h1>
     
     <p class="text-lg text-white mb-6">
-      Atentamente tus pulmones .
+      Dejaras de vapear en 10 dias.
     </p>
     
     <a
