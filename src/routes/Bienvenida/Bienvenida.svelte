@@ -4,9 +4,15 @@
   import logo from '/log.png';
   import { getOnboardingData } from '../../api/getOnboardingData';  // Importa la función de la API
 
-  // Obtener el userId del parámetro 'id' en la URL
+  // Obtener los parámetros de la URL
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id') || "ID Predeterminado";
+  const name = urlParams.get('name') || "Nombre Predeterminado";
+
+  // Almacenar el nombre en localStorage si está presente en la URL
+  if (name) {
+    localStorage.setItem('name', name);
+  }
 
   // Ejecutar la verificación al montar el componente
   onMount(async () => {
@@ -27,9 +33,17 @@
       }
 
       const userData = await response.json();
-  
-      // Almacenar el nombre del usuario en localStorage
-      localStorage.setItem('name', userData.nombre);
+      console.log('Datos del usuario:', userData);
+
+      // Verificar si el nombre del usuario está presente en los datos de la API
+      if (!userData || !userData.nombre) {
+        throw new Error('Datos del usuario incompletos o nombre no encontrado.');
+      }
+
+      // Almacenar el nombre del usuario en localStorage si no se obtuvo de la URL
+      if (!name) {
+        localStorage.setItem('name', userData.nombre);
+      }
 
       // Almacenar el ID del usuario en localStorage si es necesario
       localStorage.setItem('id', id);
@@ -71,4 +85,3 @@
 <style>
   /* Estilos personalizados */
 </style>
-

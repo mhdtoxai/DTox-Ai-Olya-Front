@@ -7,8 +7,8 @@
   let currentQuestionIndex = 0;
   let responses = [];
   let userId = '';
-  let isLoading = true; // Variable para indicar si se está cargando la información
-  let errorMessage = ''; // Variable para mostrar mensajes de error
+  let isLoading = true;
+  let showError = false;
 
   onMount(async () => {
     try {
@@ -25,36 +25,37 @@
         });
       });
 
-      // Obtener userId de localStorage
       userId = localStorage.getItem('id');
-      isLoading = false; // Se establece en falso cuando la carga de datos está completa
+      isLoading = false;
     } catch (error) {
       console.error('Error al realizar la solicitud fetch:', error);
-      isLoading = false; // Manejar caso de error también
+      isLoading = false;
     }
   });
 
+  function validateTimes() {
+    const wakeUpTime = responses.find(response => response.id === 'pregunta_id05').respuesta;
+    const breakfastTime = responses.find(response => response.id === 'pregunta_id06').respuesta;
+
+    if (wakeUpTime && breakfastTime && wakeUpTime > breakfastTime) {
+      showError = true;
+    } else {
+      showError = false;
+    }
+  }
+
   function goToNextQuestion() {
-    // Verificar si se ha seleccionado alguna respuesta
     if (responses[currentQuestionIndex].respuesta === '') {
       alert('Por favor selecciona una respuesta.');
       return;
     }
 
-    // Validar que la hora de desayuno no sea anterior a la hora de despertar
-    const wakeUpResponse = responses.find(response => response.id === 'pregunta_id05'); // Cambia 'pregunta_id05' al ID real de la pregunta de despertar
-    const breakfastResponse = responses.find(response => response.id === 'pregunta_id06'); // Cambia 'pregunta_id06' al ID real de la pregunta de desayuno
+    validateTimes();
 
-    if (wakeUpResponse && breakfastResponse && wakeUpResponse.respuesta && breakfastResponse.respuesta) {
-      if (wakeUpResponse.respuesta > breakfastResponse.respuesta) {
-        errorMessage = 'La hora de desayuno no puede ser anterior a la hora de despertar.';
-        return;
+    if (!showError) {
+      if (currentQuestionIndex < formData.preguntas.length - 1) {
+        currentQuestionIndex++;
       }
-    }
-
-    errorMessage = ''; // Limpiar el mensaje de error si la validación pasa
-    if (currentQuestionIndex < formData.preguntas.length - 1) {
-      currentQuestionIndex++;
     }
     console.log('Respuestas actuales:', responses);
   }
@@ -68,6 +69,7 @@
 
   function updateResponse(event) {
     responses[currentQuestionIndex].respuesta = event.target.value;
+    validateTimes();
     console.log('Respuestas actuales:', responses);
   }
 
@@ -91,11 +93,7 @@
       }
 
       console.log('Respuestas enviadas correctamente a la API.');
-
-      // Actualizar el estado del usuario a "cuestionariocompletado"
       await updateUserState();
-
-      // Redireccionar a la página de fin de onboarding
       navigate('/FinOnb');
 
     } catch (error) {
@@ -132,7 +130,6 @@
 
 <div class="flex items-center justify-center min-h-screen bg-gradient-to-t from-black via-black to-purple-700">
   <div class="max-w-md w-full px-4">
-    <!-- <img src={logo} alt="Logo" class="absolute top-0 left-0 mt-4 ml-4 w-12 h-auto" /> -->
     <h1 class="text-3xl text-white font-bold text-center mt-8 mb-4">Déjame conocerte para ayudarte</h1>
 
     {#if isLoading}
@@ -173,8 +170,8 @@
               />
             {/if}
           </div>
-          {#if errorMessage}
-            <p class="text-red-500 mb-4">{errorMessage}</p>
+          {#if showError}
+            <p class="text-red-500 text-center mb-4">La hora del desayuno no puede ser antes de la hora de despertar.</p>
           {/if}
           <div class="flex justify-center">
             {#if currentQuestionIndex > 0}
@@ -189,7 +186,7 @@
             {/if}
           </div>
           
-          {#if currentQuestionIndex === formData.preguntas.length - 1}
+          {#if currentQuestionIndex === formData.preguntas.length - 1 && !showError}
             <div class="flex justify-center mt-4">
               <button type="button" on:click={sendResponsesToAPI} class="bg-[#32CD32] text-white px-4 py-2 rounded">
                 Enviar respuestas
@@ -203,7 +200,3 @@
     {/if}
   </div>
 </div>
-
-<style>
-  /* Estilos personalizados */
-</style>
