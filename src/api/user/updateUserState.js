@@ -1,7 +1,9 @@
-export async function updateUserState(userId, estado) {
+export async function updateUserState(userId, estado,timezone) {
     const body = {
       userId: userId,
-      estado: estado
+      estado: estado,
+      timezone: timezone // Incluye la zona horaria en el cuerpo de la solicitud
+
     };
   
     const response = await fetch('https://jjhvjvui.top/api/user/update', {

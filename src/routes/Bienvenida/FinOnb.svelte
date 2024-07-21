@@ -1,5 +1,5 @@
 <script>
-    import logo from '/log.png';
+      import pulmones from "/pulmones.png";
 </script>
 
 
@@ -7,22 +7,24 @@
   <div class="max-w-md w-full px-4 text-center">
     <!-- <img src={logo} alt="Logo" class="absolute top-0 left-0 mt-4 ml-4 w-12 h-auto" /> -->
     <img
-      src="https://img.icons8.com/emoji/96/000000/lungs-emoji.png"
-      alt="Imagen"
-      class="w-24 h-auto rounded-full mb-4 mx-auto"
+      src={pulmones} alt="pulmones"
+      class="w-48 h-auto mb-4 mx-auto"
     />
-    <h1 class="text-4xl font-bold text-white mb-4">
-      ¡Gracias!, hasta el infinito y mas alla.
+
+
+    <h1 class="text-3xl text-white mb-4 font-light">
+      ¡Gracias... Totales!
     </h1>
     
-    <p class="text-lg text-white mb-6">
-      Atentamente tus pulmones .
+    
+    <p class="text-base text-white mb-6">
+      Atentamente, tus pulmones.
     </p>
     
     <a
       href="https://wa.me/5214871956877">
       <button
-      class="bg-transparent border-2 border-[#32CD32] px-6 py-3 rounded-lg shadow-lg text-white transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-white hover:shadow-xl">       Continuar en WhatsApp
+      class="bg-transparent border-4 border-[#32CD32] px-2 py-0.5 rounded-xl text-white transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-white hover:shadow-xl">       Continuar en WhatsApp
       </button>
     </a>
   </div>

@@ -7,6 +7,8 @@
   import Complete from "./routes/Bienvenida/Complete.svelte";
   import Error from "./routes/Bienvenida/Error.svelte";
   import Home from "./routes/Bienvenida/Home.svelte";
+  import Pruebarespirar from "./routes/Dia2/Pruebarespirar.svelte";
+  import Resultado from "./routes/Dia2/Resultado.svelte";
 </script>
 
 <Router>
@@ -21,5 +23,10 @@
     <Route path="/Complete" component={Complete} />
 
     <Route path="/Error" component={Error} />
+
+    <Route path="/Pruebarespirar" component={Pruebarespirar} />
+    <Route path="/Resultado" component={Resultado} />
+    
+
   </main>
 </Router>

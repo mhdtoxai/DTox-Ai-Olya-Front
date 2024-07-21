@@ -24,7 +24,7 @@
   let isLoading = true;
   let showError = false;
   let isSending = false; // Estado para controlar el envío y mostrar el loader
-  let title = "Déjame conocerte para ayudarte"; // Título inicial
+  let title = "Preguntas de Discovery"; // Título inicial
 
   // Ejecutar la verificación al montar el componente
   onMount(() => {
@@ -81,7 +81,7 @@
     if (responses[currentQuestionIndex]?.id === "pregunta_id05") {
       title = "Ahora un poco sobre tu rutina";
     } else {
-      title = "Déjame conocerte para ayudarte";
+      title = "Preguntas de Discovery";
     }
   }
 
@@ -122,10 +122,12 @@
     isSending = true; // Marcar como enviando
 
     try {
-  
       await saveResponses(userId, responses);
       console.log("Respuestas enviadas correctamente a la API.");
-      await updateUserState(userId, "cuestionariocompletado");
+      // Obtener la zona horaria del navegador
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      // Actualizar el estado del usuario con la zona horaria
+      await updateUserState(userId, "cuestionariocompletado", timezone);
       navigate("/FinOnb");
     } catch (error) {
       console.error("Error al enviar respuestas a la API:", error);
@@ -135,10 +137,16 @@
   }
 </script>
 
-<div class="flex items-center justify-center min-h-screen bg-gradient-to-t from-black via-black to-purple-700">
+<div
+  class="flex items-center justify-center min-h-screen bg-gradient-to-t from-black via-black to-purple-700"
+>
   <div class="max-w-md w-full px-4">
-    <h1 class="text-3xl text-white font-bold text-left mt-8 mb-4">{title}</h1>
-    <img src={logo} alt="Logo" class="absolute top-0 left-0 mt-4 ml-4 w-12 h-auto"/>
+    <h1 class="text-3xl text-white font-light text-left mt-8 mb-8">{title}</h1>
+    <img
+      src={logo}
+      alt="Logo"
+      class="absolute top-0 left-0 mt-4 ml-4 w-12 h-auto"
+    />
 
     {#if isLoading}
       <p class="text-white text-center mt-4">Cargando...</p>
@@ -208,21 +216,20 @@
         {#if currentQuestionIndex === formData.preguntas.length - 1 && !showError}
           <div class="flex justify-center mt-4">
             <button
-              type="button"
-              on:click={sendResponsesToAPI}
-              disabled={isSending} 
-              class="bg-[#32CD32] text-white px-8 py-2 rounded flex items-center justify-center"
-              style="min-width: 200px;" 
-            >
-              {#if isSending}
-                <svg class="animate-spin h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A8.003 8.003 0 014 4.437M22 12h-4M18 20.562a8.003 8.003 0 01-7.563-4.688M20 9.709a8.003 8.003 0 01-7.563 4.687"></path>
-                </svg>
-              {:else}
-                Enviar respuestas
-              {/if}
-            </button>
+            type="button"
+            on:click={sendResponsesToAPI}
+            disabled={isSending}
+            class="{isSending ? 'bg-black' : 'bg-[#32CD32]'} text-white px-8 py-2 rounded flex items-center justify-center"
+            style="min-width: 200px;"
+          >
+            {#if isSending}
+              <span class="flex items-center space-x-2">
+                <span>Procesando...</span>
+              </span>
+            {:else}
+              Enviar respuestas
+            {/if}
+          </button>
           </div>
         {/if}
       </form>
