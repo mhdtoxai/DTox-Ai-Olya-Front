@@ -34,21 +34,23 @@
         }
 
         try {
-            // Verificar si el testId ya está registrado
-            const result = await checkTestIdExists();
-            console.log("¿Test ID existe?:", result.exists); // Agregar log para verificar el resultado
+    // Verificar si el testId ya está registrado
+    const result = await checkTestIdExists();
+    console.log("¿Test ID existe?:", result.exists); // Agregar log para verificar el resultado
 
-            if (result.exists) {
-                navigate('/'); // Redirigir a la raíz si el testId ya está registrado
-            } else if (result.error) {
-                throw new Error(result.error);
-            }
-        } catch (error) {
-            console.error('Error al verificar el testId:', error);
-            navigate('/Error'); // Redirigir a la pantalla de error en caso de error
-        } finally {
-            isLoading = false; // Desactivar el estado de carga inicial
-        }
+    if (result.exists) {
+        navigate('/'); // Redirigir a la raíz si el testId ya está registrado
+    } else if (result.error) {
+        throw new Error(result.error);
+    }
+} catch (error) {
+    console.error('Error al verificar el testId:', error);
+    // Eliminar la redirección a la pantalla de error
+    // Puedes agregar cualquier otra lógica para manejar el error aquí
+} finally {
+    isLoading = false; // Desactivar el estado de carga inicial
+}
+
     });
 
     function startExercise() {
