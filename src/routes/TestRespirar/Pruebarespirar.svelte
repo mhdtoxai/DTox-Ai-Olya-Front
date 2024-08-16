@@ -158,7 +158,7 @@
                 <button class="py-2 px-6 border-2 border-[#32CD32] rounded-full bg-transparent text-green-400 text-lg cursor-pointer transition duration-300 hover:bg-[#32CD32] hover:text-white {loading ? 'button-disabled' : ''}" on:click="{handleRegister}" disabled={loading}>Registrar</button>
             </div>
             {#if loading}
-                <div class="loading-message">Procesando...</div>
+                <div class="text-white loading-message">Procesando...</div>
             {/if}
         </div>
     </div>
