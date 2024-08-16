@@ -190,20 +190,22 @@
         {#if currentQuestionIndex === formData.preguntas.length - 1 && !isSending}
           <div class="flex justify-center mt-4">
             <button
-            type="button"
-            on:click={sendResponsesToAPI}
-            disabled={isSending}
-            class="{isSending ? 'bg-black' : 'bg-[#32CD32]'} text-white px-8 py-2 rounded flex items-center justify-center"
-            style="min-width: 200px;"
-          >
-            {#if isSending}
-              <span class="text-white flex items-center space-x-2">
-                <span>Procesando...</span>
-              </span>
-            {:else}
-              Enviar respuestas
-            {/if}
-          </button>
+              type="button"
+              on:click={sendResponsesToAPI}
+              disabled={isSending}
+              class="text-white px-8 py-2 rounded flex items-center justify-center"
+              class:bg-black={isSending}
+              class:bg-[#32CD32]={!isSending}
+              style="min-width: 200px;"
+            >
+              {#if isSending}
+                <span class="flex items-center space-x-2">
+                  <span>Procesando...</span>
+                </span>
+              {:else}
+                Enviar respuestas
+              {/if}
+            </button>
           </div>
         {/if}
       </form>
