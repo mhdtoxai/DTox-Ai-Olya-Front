@@ -189,21 +189,22 @@
 
         {#if currentQuestionIndex === formData.preguntas.length - 1 && !isSending}
           <div class="flex justify-center mt-4">
-            <div class="flex justify-center mt-4">
-              <button
-                type="button"
-                on:click={() => {
-                  console.log("Botón clickeado");
-                  isSending = !isSending; // Alterna el estado para pruebas
-                }}
-                class="bg-transparent border-4 border-[#32CD32] px-4 py-2 rounded-xl text-white transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-white hover:shadow-xl"
-                style="min-width: 200px;"
-              >
-            
-                  <span>Enviar</span>
-               
-              </button>
-            </div>
+            <button
+            type="button"
+            on:click={sendResponsesToAPI}
+            disabled={isSending} 
+            class="bg-[#32CD32] text-white px-8 py-2 rounded flex items-center justify-center"
+            style="min-width: 200px;" 
+          >
+            {#if isSending}
+              <svg class="animate-spin h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A8.003 8.003 0 014 4.437M22 12h-4M18 20.562a8.003 8.003 0 01-7.563-4.688M20 9.709a8.003 8.003 0 01-7.563 4.687"></path>
+              </svg>
+            {:else}
+              Enviar respuestas
+            {/if}
+          </button>
           </div>
         {/if}
       </form>
