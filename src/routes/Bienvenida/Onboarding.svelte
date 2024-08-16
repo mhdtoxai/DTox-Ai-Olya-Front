@@ -22,7 +22,6 @@
   let responses = [];
   let userId = "";
   let isLoading = true;
-  let showError = false;
   let isSending = false; // Estado para controlar el envío y mostrar el loader
   let title = "Preguntas de Discovery"; // Título inicial
 
@@ -50,7 +49,7 @@
         responses.push({
           id: pregunta.id,
           texto: pregunta.texto,
-          respuesta: "",
+          respuesta: "", // Initialize with an empty string or default value
         });
       });
 
@@ -59,21 +58,6 @@
     } catch (error) {
       console.error("Error al cargar el formulario de onboarding:", error);
       isLoading = false;
-    }
-  }
-
-  function validateTimes() {
-    const wakeUpTime = responses.find(
-      (response) => response.id === "pregunta_id05",
-    ).respuesta;
-    const breakfastTime = responses.find(
-      (response) => response.id === "pregunta_id06",
-    ).respuesta;
-
-    if (wakeUpTime && breakfastTime && wakeUpTime > breakfastTime) {
-      showError = true;
-    } else {
-      showError = false;
     }
   }
 
@@ -91,12 +75,8 @@
       return;
     }
 
-    validateTimes();
-
-    if (!showError) {
-      if (currentQuestionIndex < formData.preguntas.length - 1) {
-        currentQuestionIndex++;
-      }
+    if (currentQuestionIndex < formData.preguntas.length - 1) {
+      currentQuestionIndex++;
     }
     updateTitle();
     console.log("Respuestas actuales:", responses);
@@ -112,7 +92,6 @@
 
   function updateResponse(event) {
     responses[currentQuestionIndex].respuesta = event.target.value;
-    validateTimes();
     console.log("Respuestas actuales:", responses);
   }
 
@@ -165,7 +144,7 @@
                   value={opcion}
                   class="mr-2 appearance-none rounded-full w-4 h-4 border-2 border-green-500 checked:bg-green-500 checked:border-transparent focus:outline-none"
                   on:change={updateResponse}
-                  checked={responses[currentQuestionIndex].respuesta === opcion}
+                  bind:group={responses[currentQuestionIndex].respuesta}
                 />
                 <span>{opcion}</span>
               </label>
@@ -187,11 +166,6 @@
             />
           {/if}
         </div>
-        {#if showError}
-          <p class="text-red-500 text-center mb-4">
-            La hora del desayuno no puede ser antes de la hora de despertar.
-          </p>
-        {/if}
         <div class="flex justify-center">
           {#if currentQuestionIndex > 0}
             <button
@@ -213,7 +187,7 @@
           {/if}
         </div>
 
-        {#if currentQuestionIndex === formData.preguntas.length - 1 && !showError}
+        {#if currentQuestionIndex === formData.preguntas.length - 1 && !isSending}
           <div class="flex justify-center mt-4">
             <button
             type="button"
@@ -223,7 +197,7 @@
             style="min-width: 200px;"
           >
             {#if isSending}
-              <span class="flex items-center space-x-2">
+              <span class="text-white flex items-center space-x-2">
                 <span>Procesando...</span>
               </span>
             {:else}
