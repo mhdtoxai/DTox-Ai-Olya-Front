@@ -199,11 +199,9 @@
                 class="bg-transparent border-4 border-[#32CD32] px-4 py-2 rounded-xl text-white transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-white hover:shadow-xl"
                 style="min-width: 200px;"
               >
-                {#if isSending}
-                  <span class="text-white">Enviando...</span>
-                {:else}
+            
                   <span>Enviar</span>
-                {/if}
+               
               </button>
             </div>
           </div>
