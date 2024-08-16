@@ -188,27 +188,22 @@
         </div>
 
         {#if currentQuestionIndex === formData.preguntas.length - 1 && !isSending}
-        <div class="flex justify-center mt-4">
           <div class="flex justify-center mt-4">
-            <button
-              type="button"
-              on:click={sendResponsesToAPI}
-              disabled={isSending}
-              class="bg-transparent border-4 border-[#32CD32] px-4 py-2 rounded-xl text-white transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-white hover:shadow-xl"
-              style="min-width: 200px;"
-            >
-              {#if isSending}
-                <span class="flex items-center space-x-2 text-white">
-                  <!-- Asegúrate de que el texto sea blanco y visible -->
-                  <span>Enviando...</span>
-                </span>
-              {:else}
-                Enviar
-              {/if}
-            </button>
-          </div>
-          
-          </div>
+              <button
+                type="button"
+                on:click={sendResponsesToAPI}
+                disabled={isSending}
+                class="bg-transparent border-4 border-[#32CD32] px-4 py-2 rounded-xl text-white transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-white hover:shadow-xl"
+                style="min-width: 200px;"
+              >
+                {#if isSending}
+                  {console.log("Estado de envío activo")}
+                  <span class="text-white">Enviando...</span>
+                {:else}
+                  <span>Enviar</span>
+                {/if}
+              </button>
+            </div>
         {/if}
       </form>
     {:else}
