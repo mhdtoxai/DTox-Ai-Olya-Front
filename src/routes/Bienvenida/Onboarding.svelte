@@ -193,21 +193,20 @@
             type="button"
             on:click={sendResponsesToAPI}
             disabled={isSending}
-            class="bg-[#32CD32] text-white px-8 py-2 rounded flex items-center justify-center"
+            class="bg-transparent border-4 border-[#32CD32] px-4 py-2 rounded-xl text-white transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-white hover:shadow-xl"
             style="min-width: 200px;"
           >
-            <span class="flex items-center space-x-2">
-              {#if isSending}
+            {#if isSending}
+              <span class="flex items-center space-x-2">
                 <!-- Texto opcional si quieres mantener alguna indicación cuando esté enviando -->
                 <span>Enviando...</span>
-              {:else}
-                Enviar
-              {/if}
-            </span>
+              </span>
+            {:else}
+              Enviar
+            {/if}
           </button>
-        </div>
-        
-        
+              
+          </div>
         {/if}
       </form>
     {:else}
