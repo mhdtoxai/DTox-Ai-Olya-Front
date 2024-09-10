@@ -110,10 +110,11 @@
     isSending = true;
 
     try {
-      await saveResponses(userId, responses);
-      console.log("Respuestas enviadas correctamente a la API.");
+     
       const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       await updateUserState(userId, "cuestionariocompletado", timezone);
+      await saveResponses(userId, responses);
+      console.log("Respuestas enviadas correctamente a la API.");
       navigate("/FinOnb");
     } catch (error) {
       console.error("Error al enviar respuestas a la API:", error);
