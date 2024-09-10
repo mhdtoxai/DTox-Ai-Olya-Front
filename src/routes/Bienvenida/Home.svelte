@@ -16,7 +16,7 @@
     </h1>
     
     <p class="text-lg text-white mb-6">
-      Dejaras de vapear en 10 dias.
+      Dejaras de vapear en 20 dias.
     </p>
     
     <a
