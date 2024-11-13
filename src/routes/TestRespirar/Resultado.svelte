@@ -10,7 +10,7 @@
     let t = translations[language] || translations["español"]; // Seleccionar las traducciones según el idioma
 </script>
 
-<div class="flex justify-center items-center h-screen bg-gradient-to-b from-purple-800 to-black text-white text-center p-5">
+<div class="flex justify-center items-center h-screen bg-gradient-to-br from-fuchsia-900 via-purple-900 to-fuchsia-900 text-white text-center p-5">
     <div class="max-w-md w-full">
         <h2 class="text-2xl font-bold mb-3">{t.thankYou}</h2>
         <div class="w-24 h-24 mx-auto mb-5">
