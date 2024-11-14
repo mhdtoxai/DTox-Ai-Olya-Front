@@ -221,22 +221,19 @@
 
           {#if formData.preguntas[currentQuestionIndex].tipo === "radio"}
           <div class="flex flex-col items-start ml-6 md:items-center md:ml-0 w-full">
-            <!-- Botones que ocupan el ancho completo en pantallas grandes -->
-            {#each formData.preguntas[currentQuestionIndex].opciones as opcion}
+            {#each formData.preguntas[currentQuestionIndex].opciones as opcion, i}
               <button
                 type="button"
-                class="bg-black text-white font-bold border-2 border-[#00000000] py-6 px-4 text-sm rounded-xl mb-3 cursor-pointer transition-all duration-200 ease-in-out w-[200px] md:w-full flex justify-center items-center
-                {responses[currentQuestionIndex].respuesta === opcion
-                  ? 'bg-[#4caf50] text-white'
-                  : 'bg-black'}"
+                class="font-bold border-2 border-[#00000000] py-6 px-4 text-sm rounded-xl mb-3 cursor-pointer transition-all duration-200 ease-in-out w-[200px] md:w-full flex justify-center items-center
+                  {responses[currentQuestionIndex].respuesta === opcion ? 'selected' : 'default'}"
                 on:click={() => updateResponse(opcion)}
               >
                 {opcion}
               </button>
             {/each}
           </div>
-          
-          {/if}
+        {/if}
+        
 
           {#if formData.preguntas[currentQuestionIndex].tipo === "fecha"}
             <input
@@ -250,28 +247,28 @@
         </div>
 
         <div class="flex justify-center">
-          {#if currentQuestionIndex > 0}
+          {#if currentQuestionIndex > 0 && !isSending} <!-- Agregado && !isSending -->
             <button
               type="button"
               on:click={goToPreviousQuestion}
-              class="bg-[#000000] text-white px-6 py-4  rounded-xl mr-2"
+              class="bg-[#000000] text-white px-6 py-4 rounded-xl mr-2"
             >
               {t.previous}
             </button>
           {/if}
-          {#if currentQuestionIndex < formData.preguntas.length - 1}
+          {#if currentQuestionIndex < formData.preguntas.length - 1 && !isSending} <!-- Agregado && !isSending -->
             <button
               type="button"
               on:click={goToNextQuestion}
-              class="bg-[#000000] text-white px-6 py-4  rounded-xl  ml-2"
+              class="bg-[#000000] text-white px-6 py-4 rounded-xl ml-2"
             >
               {t.next}
             </button>
           {/if}
         </div>
-
+        
         {#if currentQuestionIndex === formData.preguntas.length - 1}
-          {#if !isSending}
+          {#if !isSending} <!-- Agregado !isSending -->
             <div class="flex justify-center mt-4">
               <button
                 type="button"
@@ -283,14 +280,15 @@
               </button>
             </div>
           {/if}
-
-          {#if isSending}
+        
+          {#if isSending} <!-- Mantenido isSending -->
             <div class="flex justify-center mt-4">
               <div class="spinner"></div>
               <span class="ml-2 text-white">{t.processing}</span>
             </div>
           {/if}
         {/if}
+        
       </form>
     {:else}
       <p class="text-white text-center">No se pudo cargar el formulario.</p>
@@ -313,4 +311,14 @@
       transform: rotate(360deg);
     }
   }
+  .selected {
+  background-color: #4caf50;
+  color: white;
+}
+
+.default {
+  background-color: black;
+  color: white;
+}
+
 </style>
