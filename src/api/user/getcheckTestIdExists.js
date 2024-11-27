@@ -10,7 +10,7 @@ export async function checkTestIdExists() {
     }
 
     try {
-        const response = await fetch('https://jjhvjvui.top/api/test/testrespiracion/obtenerpruebas', {
+        const response = await fetch('https://olya.club/api/test/testrespiracion/obtenerpruebas', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

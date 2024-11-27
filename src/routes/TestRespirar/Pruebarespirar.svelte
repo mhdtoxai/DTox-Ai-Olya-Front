@@ -118,7 +118,7 @@ function stopExercise() {
         <!-- Banner superior -->
         <div class="w-11/12 max-w-4xl h-48 bg-white rounded-b-3xl mb-3 flex relative overflow-hidden ">
             <!-- Imagen del perro absolutamente posicionada en la esquina inferior izquierda -->
-            <div class="absolute bottom-0 left-[-25px]">
+            <div class="absolute bottom-0 left-[-10px]">
                 <img class="w-44 h-44 object-cover" src={dog1} alt="Foto de un perro" />
             </div>
             
@@ -135,11 +135,11 @@ function stopExercise() {
                         {t.welcome}, {name}
                     </h2>
                     
-                    <div class="text-purple-600 text-[15px] lg:text-[19px] font-semibold  max-w-[15rem] lg:max-w-full  text-right">
+                    <div class="text-purple-600 text-[15px] lg:text-[19px] font-semibold  max-w-[15rem] lg:max-w-full  text-right leading-none m-0.5">
                         {t.warning1}
                     </div>
                     
-                    <div class="text-purple-600 text-[15px] lg:text-[19px] font-semibold  max-w-[15rem] lg:max-w-full  text-right">
+                    <div class="text-purple-600 text-[15px] lg:text-[19px] font-semibold  max-w-[15rem] lg:max-w-full  text-right leading-none m-0.5 ">
                         {t.warning2}
                     </div>
                     
@@ -152,7 +152,7 @@ function stopExercise() {
         <div
             class="w-11/12 max-w-4xl bg-gradient-to-br from-fuchsia-900 via-purple-900 to-fuchsia-900 text-white rounded-t-3xl p-4 text-center flex-grow">
             <!-- Instrucciones numeradas en una sola línea -->
-            <div class="text-left text-lg font-semibold lg:text-2xl lg:font-normal mb-4">
+            <div class="text-left text-normal  lg:text-xl mb-4">
                 <p class="flex items-start mb-2 flex-wrap">
                     <span class="w-6 h-6 text-xs flex items-center justify-center border-2 border-white text-white rounded-full mr-2">
                         1

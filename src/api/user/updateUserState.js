@@ -6,7 +6,7 @@ export async function updateUserState(userId, estado,timezone) {
 
     };
   
-    const response = await fetch('https://jjhvjvui.top/api/user/update', {
+    const response = await fetch('https://olya.club/api/user/update', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

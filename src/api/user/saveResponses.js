@@ -5,7 +5,7 @@ export async function saveResponses(userId, responses) {
     };
   
     try {
-      const response = await fetch('https://jjhvjvui.top/api/saveResponses', {
+      const response = await fetch('https://olya.club/api/saveResponses', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

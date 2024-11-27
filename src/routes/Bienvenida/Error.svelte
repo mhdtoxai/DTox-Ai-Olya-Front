@@ -1,31 +1,57 @@
 <script>
-    import logo from '/log.png';
+  import pulmones from '/pulmones.png';
+  import { translations } from './translations'; // Ajusta la ruta según corresponda
+  import dog3 from "/dog3.webp";
+  import logo from "/log.png";
+
+  // Obtener el idioma desde localStorage, con un valor predeterminado de "español"
+  const language = localStorage.getItem('language') || 'español';
+
+  // Elegir las traducciones correspondientes al idioma
+  const t = translations[language] || translations['español']; // Usar español por defecto si el idioma no está disponible
 </script>
 
+<div class="flex flex-col items-center min-h-screen bg-black font-arial text-white">
+  <!-- Div blanco más grande -->
+  <div class="w-11/12 max-w-4xl h-[600px] bg-white rounded-b-3xl mb-3 flex flex-col justify-between relative overflow-hidden">
+    <!-- Logo en la esquina superior derecha -->
+    <div class="absolute top-0 right-0 p-4 ">
+      <img class="w-10 h-10" src={logo} alt="Logo" />
+    </div>
 
-<div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-fuchsia-900 via-purple-900 to-fuchsia-900">
-  <div class="max-w-md w-full px-4 text-center">
-    <img src={logo} alt="Logo" class="absolute top-0 left-0 mt-4 ml-4 w-12 h-auto" />
-    <img
-      src="https://img.icons8.com/color/96/sad--v1.png"
-      alt="Imagen"
-      class="w-24 h-auto rounded-full mb-4 mx-auto"
-    />
-    <h1 class="text-4xl font-bold text-white mb-4">
-      ¡Opss!, Los sentimos mucho ... Ocurrio un error!.
-    </h1>
+    <!-- Contenedor flex para centrar verticalmente -->
+    <div class="flex flex-col justify-center flex-grow items-center text-center  mt-14 ">
+      <!-- Título centrado con texto responsivo -->
+      <h1 class="text-4xl sm:text-4xl md:text-4xl lg:text-5xl text-black mb-2 font-bold">
+        {t.ErrorTitle} <!-- Texto dinámico -->
+      </h1>
+   
+      <!-- Mensaje centrado debajo del título con texto responsivo -->
+      <p class="text-2xl sm:text-2xl md:text-2xl lg:text-3xl text-purple-500  font-bold">
+        {t.ErrorTitle2} <!-- Texto dinámico -->
+      </p>
     
-    <p class="text-lg text-white mb-6">
-      Intentalo de nuevo o mas tarde.
-    </p>
-    
-    <a
-      href="https://wa.me/5214871956877">
-      <button
-      class="bg-transparent border-2 border-[#32CD32] px-6 py-3 rounded-lg shadow-lg text-white transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-white hover:shadow-xl">       Continuar en WhatsApp
-      </button>
-    </a>
+    </div>
+
+    <!-- Imagen del perro centrada en la parte inferior del div blanco -->
+    <div class="flex items-end justify-center mb-0">
+      <img class="w-64 h-64 object-cover" src={dog3} alt="Foto de un perro" />
+    </div>
   </div>
+
+ 
+  <!-- Div morado mucho más pequeño -->
+<div class="w-11/12 max-w-4xl h-[100px] bg-gradient-to-br from-fuchsia-900 via-purple-900 to-fuchsia-900 text-white rounded-t-3xl p-4 text-center flex-grow">
+  <!-- Botón desplazado hacia abajo en el borde inferior -->
+  <a href="https://wa.me/5214871956877">
+    <button
+    class="bg-black text-[#35b135] px-6 py-2 rounded-3xl text-sm sm:text-base md:text-lg lg:text-xl transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-black hover:shadow-xl mt-8">
+    {t.continueOnWhatsApp} <!-- Texto dinámico -->
+  </button>
+  
+  </a>
+</div>
+
 </div>
 
 

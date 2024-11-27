@@ -2,7 +2,7 @@
 
 export const getOnboardingData = async (senderId) => {
     try {
-      const response = await fetch('https://jjhvjvui.top/api/user/onboarding', {
+      const response = await fetch('https://olya.club/api/user/onboarding', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

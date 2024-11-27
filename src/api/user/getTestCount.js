@@ -1,4 +1,4 @@
-const BASE_URL = 'https://jjhvjvui.top/api/test/testrespiracion';
+const BASE_URL = 'https://olya.club/api/test/testrespiracion';
 
 // Obtener el número de pruebas registradas
 export async function getTestCount(userId) {

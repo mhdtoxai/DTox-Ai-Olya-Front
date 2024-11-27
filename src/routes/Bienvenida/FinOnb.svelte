@@ -15,7 +15,7 @@
   <!-- Div blanco más grande -->
   <div class="w-11/12 max-w-4xl h-[600px] bg-white rounded-b-3xl mb-3 flex flex-col justify-between relative overflow-hidden">
     <!-- Logo en la esquina superior derecha -->
-    <div class="absolute top-0 right-0 p-4 ">
+    <div class="absolute top-0 right-0 p-2 ">
       <img class="w-10 h-10" src={logo} alt="Logo" />
     </div>
 

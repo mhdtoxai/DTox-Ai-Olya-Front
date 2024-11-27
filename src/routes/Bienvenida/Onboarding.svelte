@@ -143,7 +143,7 @@
     class="w-11/12 max-w-4xl h-48 bg-white rounded-b-3xl mb-3 flex relative overflow-hidden"
   >
     <!-- Imagen del perro absolutamente posicionada en la esquina inferior izquierda -->
-    <div class="absolute bottom-0 left-[-25px]">
+    <div class="absolute bottom-0 left-[-10px]">
       <img class="w-44 h-44 object-cover" src={dog2} alt="Foto de un perro" />
     </div>
 
@@ -162,20 +162,21 @@
           {t.welcome}, {name}
         </h2>
 
-        <div
-          class="text-purple-600 text-[15px] lg:text-[19px] font-semibold max-w-[15rem] lg:max-w-full text-right">
-          {t.warning1}
-        </div>
+       <div
+  class="text-purple-600 text-[16px] lg:text-[30px] font-semibold max-w-[15rem] lg:max-w-full text-right leading-none m-0.5">
+  {t.warning1}
+</div>
 
-        <div
-          class="text-purple-600 text-[15px] lg:text-[19px] font-semibold max-w-[15rem] lg:max-w-full text-right">
-          {t.warning2}
-        </div>
+<div
+  class="text-purple-600 text-[16px] lg:text-[30px] font-semibold max-w-[15rem] lg:max-w-full text-right leading-none m-0.5">
+  {t.warning2}
+</div>
 
-        <div
-          class="text-purple-600 text-[15px] lg:text-[19px] font-semibold max-w-[15rem] lg:max-w-full text-right">
-          {t.warning3}
-        </div>
+<div
+  class="text-purple-600 text-[16px] lg:text-[30px] font-semibold max-w-[15rem] lg:max-w-full text-right leading-none m-0.5">
+  {t.warning3}
+</div>
+
       </div>
     </div>
   </div>
@@ -246,12 +247,12 @@
           
         </div>
 
-        <div class="flex justify-center">
+        <div class="flex justify-center space-x-4">
           {#if currentQuestionIndex > 0 && !isSending} <!-- Agregado && !isSending -->
             <button
               type="button"
               on:click={goToPreviousQuestion}
-              class="bg-[#000000] text-white px-6 py-4 rounded-xl mr-2"
+              class="bg-[#000000] text-white px-6 py-2 rounded-3xl text-sm sm:text-base md:text-lg lg:text-xl min-w-[8rem]"
             >
               {t.previous}
             </button>
@@ -260,10 +261,11 @@
             <button
               type="button"
               on:click={goToNextQuestion}
-              class="bg-[#000000] text-white px-6 py-4 rounded-xl ml-2"
+              class="bg-[#000000] text-white px-6 py-2 rounded-3xl text-sm sm:text-base md:text-lg lg:text-xl min-w-[8rem]"
             >
               {t.next}
             </button>
+      
           {/if}
         </div>
         

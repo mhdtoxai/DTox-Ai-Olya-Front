@@ -4,7 +4,7 @@ import { navigate } from 'svelte-routing'; // Asegúrate de importar navigate de
 
 export async function getUserInfoAndOnboardingCheck(id, name) {
   try {
-    const response = await fetch("https://jjhvjvui.top/api/user/get", {
+    const response = await fetch("https://olya.club/api/user/get", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
