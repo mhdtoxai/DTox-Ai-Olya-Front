@@ -21,6 +21,8 @@
 
     <!-- Contenedor flex para centrar verticalmente -->
     <div class="flex flex-col justify-center flex-grow items-center text-center  mt-14 ">
+
+      
       <!-- Título centrado con texto responsivo -->
       <h1 class="text-4xl sm:text-4xl md:text-4xl lg:text-5xl text-black mb-2 font-bold">
         {t.thankYouTitle} <!-- Texto dinámico -->
@@ -32,18 +34,34 @@
       <p class="text-2xl sm:text-2xl md:text-2xl lg:text-3xl text-purple-500 mb-6 font-bold">
         {t.thankYouMessage} <!-- Texto dinámico -->
       </p>
+
+
+      
+
+      
     </div>
 
     <!-- Imagen del perro centrada en la parte inferior del div blanco -->
     <div class="flex items-end justify-center mb-0">
       <img class="w-64 h-64 object-cover" src={dog2} alt="Foto de un perro" />
     </div>
+    
   </div>
 
  
   <!-- Div morado mucho más pequeño -->
-<div class="w-11/12 max-w-4xl h-[100px] bg-gradient-to-br from-fuchsia-900 via-purple-900 to-fuchsia-900 text-white rounded-t-3xl p-4 text-center flex-grow">
+<div class="w-11/12 max-w-4xl h-[250px] bg-gradient-to-br from-fuchsia-900 via-purple-900 to-fuchsia-900 text-white rounded-t-3xl p-4 text-center flex-grow">
   <!-- Botón desplazado hacia abajo en el borde inferior -->
+
+  <div class=" font-bold bg-black text-[#35b135] px-6 py-2 rounded-3xl text-sm sm:text-base md:text-lg lg:text-xl transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-black hover:shadow-xl mt-8">
+
+    <p>
+      {t.referMessage} <!-- Texto dinámico -->
+        </p>
+  </div>
+  <p class="text-2xl sm:text-2xl md:text-2xl lg:text-3xl text-[#35b135] mb-6 font-bold">
+ 
+  </p>
   <a href="https://wa.me/5214871956877">
     <button
     class="bg-black text-[#35b135] px-6 py-2 rounded-3xl text-sm sm:text-base md:text-lg lg:text-xl transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-black hover:shadow-xl mt-8">

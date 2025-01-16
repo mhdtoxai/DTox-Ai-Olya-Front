@@ -23,6 +23,7 @@ export const translations = {
       thankYouTitle2: "¡Well done!",
       thankYouMessage: "Your lungs will thank you.",
       continueOnWhatsApp: "Continue on WhatsApp®",
+      referMessage:"📢Spread the word and earn 1 USD for each referral. You will only have to share your unique code."
     
     },
     español: {
@@ -49,5 +50,6 @@ export const translations = {
       thankYouTitle2: "¡Bien hecho!",
       thankYouMessage: "Tus pulmones te lo agradeceran.",
       continueOnWhatsApp: "Volver a WhatsApp®",
+      referMessage: "📢 Corre la voz y gana 1 USD por cada referido. Únicamente deberás compartirle tu código único.",
     }
 };

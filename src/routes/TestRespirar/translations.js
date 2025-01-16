@@ -20,7 +20,7 @@ export const translations = {
         registerError: "Error registering test",
         thankYou: "THANK YOU!",
         testRecorded: "Your pulmonary capacity test result has been recorded.",
-        continueWhatsApp: "Continue on WhatsApp"
+        continueWhatsApp: "Continue on WhatsApp®"
     },
     español: {
         welcome:"Hola",
@@ -43,6 +43,6 @@ export const translations = {
         registerError: "Error al registrar el test",
         thankYou: "¡GRACIAS!",
         testRecorded: "Tu resultado de la prueba de capacidad pulmonar ha sido registrado.",
-        continueWhatsApp: "Continuar en WhatsApp"
+        continueWhatsApp: "Continuar en WhatsApp®"
     }
 };

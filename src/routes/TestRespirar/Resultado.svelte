@@ -19,7 +19,7 @@
         <p>{t.testRecorded}</p>
         <div class="mt-5">
             <a href="https://wa.me/5214871956877">
-                <button class="bg-transparent border-2 border-[#32CD32] px-6 py-3 rounded-lg shadow-lg text-white transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-white hover:shadow-xl">
+                <button class="bg-black text-[#35b135] px-6 py-2 rounded-3xl text-sm sm:text-base md:text-lg lg:text-xl transition duration-300 ease-in-out hover:bg-[#32CD32] hover:text-black hover:shadow-xl mt-8">
                     {t.continueWhatsApp}
                 </button>
             </a>

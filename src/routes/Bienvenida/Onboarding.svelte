@@ -149,34 +149,33 @@
 
     <!-- Contenedor de texto alineado a la derecha y hacia abajo con ancho controlado -->
     <div
-      class="text-black text-right flex flex-col items-end justify-end flex-grow pr-4 ml-auto max-w-xs mb-2">
-      <!-- Logo alineado en la esquina superior derecha -->
-      <div class="self-end mb-3">
+      class="text-black text-right flex flex-col items-end justify-end flex-grow pr-4 ml-auto max-w-xs mb-2"
+    >
+      <div class="self-end mb-8">
         <img src={logo} alt="Logo" class="w-10 h-10" />
       </div>
-
-      <!-- Texto de bienvenida con ajuste preciso para evitar saltos de línea innecesarios -->
       <div>
         <h2
-          class="text-2xl lg:text-3xl font-bold leading-tight mb-2 max-w-[12rem] break-words">
-          {t.welcome}, {name}
+          class="text-2xl lg:text-3xl font-bold leading-tight mb-2 max-w-[12rem] break-words"
+        >
+          {t.welcome},{name}
         </h2>
+        <div
+          class="text-purple-600 text-[15px] lg:text-[19px] font-semibold max-w-[15rem] lg:max-w-full text-right leading-none m-0.5"
+        >
+          {t.warning1}
+        </div>
+        <div
+          class="text-purple-600 text-[15px] lg:text-[19px] font-semibold max-w-[15rem] lg:max-w-full text-right leading-none m-0.5"
+        >
+          {t.warning2}
+        </div>
 
-       <div
-  class="text-purple-600 text-[16px] lg:text-[30px] font-semibold max-w-[15rem] lg:max-w-full text-right leading-none m-0.5">
-  {t.warning1}
-</div>
-
-<div
-  class="text-purple-600 text-[16px] lg:text-[30px] font-semibold max-w-[15rem] lg:max-w-full text-right leading-none m-0.5">
-  {t.warning2}
-</div>
-
-<div
-  class="text-purple-600 text-[16px] lg:text-[30px] font-semibold max-w-[15rem] lg:max-w-full text-right leading-none m-0.5">
-  {t.warning3}
-</div>
-
+        <div
+          class="text-purple-600 text-[15px] lg:text-[19px] font-semibold max-w-[15rem] lg:max-w-full text-right leading-none m-0.5"
+        >
+          {t.warning3}
+        </div>
       </div>
     </div>
   </div>
@@ -187,17 +186,17 @@
     <h1 class="text-3xl text-white font-light mt-8 mb-8">{title}</h1>
     <!-- Título dinámico -->
 
-<!-- Barra de progreso -->
-<div class="flex mb-6 space-x-2">
-  {#each Array(8) as _, index}
-    <div
-      class="flex-1 h-2 rounded-full transition-all duration-200 ease-in-out"
-      style="background-color: {currentQuestionIndex >= index ? '#000000' : '#ffffff'}"
-    ></div>
-  {/each}
-</div>
-
-
+    <!-- Barra de progreso -->
+    <div class="flex mb-6 space-x-2">
+      {#each Array(9) as _, index}
+        <div
+          class="flex-1 h-2 rounded-full transition-all duration-200 ease-in-out"
+          style="background-color: {currentQuestionIndex >= index
+            ? '#000000'
+            : '#ffffff'}"
+        ></div>
+      {/each}
+    </div>
 
     {#if isLoading}
       <p class="text-white text-center mt-4">{t.loading}</p>
@@ -208,33 +207,34 @@
           <div class="flex items-start mb-4">
             <!-- Número de la pregunta con círculo fijo que no se puede reducir -->
             <span
-              class="border border-white text-white rounded-full w-6 h-6 flex items-center justify-center mr-4 flex-shrink-0 text-xs"
-            >
+              class="border border-white text-white rounded-full w-6 h-6 flex items-center justify-center mr-4 flex-shrink-0 text-xs">
               {currentQuestionIndex + 1}
             </span>
             <!-- Texto de la pregunta, que se ajusta en varias líneas si es necesario -->
             <p
-              class="text-white font-bold flex-grow text-sm md:text-base break-words"
-            >
+              class="text-white font-bold flex-grow text-sm md:text-base break-words">
               {formData.preguntas[currentQuestionIndex].texto}
             </p>
           </div>
 
           {#if formData.preguntas[currentQuestionIndex].tipo === "radio"}
-          <div class="flex flex-col items-start ml-6 md:items-center md:ml-0 w-full">
-            {#each formData.preguntas[currentQuestionIndex].opciones as opcion, i}
-              <button
-                type="button"
-                class="font-bold border-2 border-[#00000000] py-6 px-4 text-sm rounded-xl mb-3 cursor-pointer transition-all duration-200 ease-in-out w-[200px] md:w-full flex justify-center items-center
-                  {responses[currentQuestionIndex].respuesta === opcion ? 'selected' : 'default'}"
-                on:click={() => updateResponse(opcion)}
-              >
-                {opcion}
-              </button>
-            {/each}
-          </div>
-        {/if}
-        
+            <div
+              class="flex flex-col items-start ml-6 md:items-center md:ml-0 w-full"
+            >
+              {#each formData.preguntas[currentQuestionIndex].opciones as opcion, i}
+                <button
+                  type="button"
+                  class="font-bold border-2 border-[#00000000] py-6 px-4 text-sm rounded-xl mb-3 cursor-pointer transition-all duration-200 ease-in-out w-[200px] md:w-full flex justify-center items-center
+                  {responses[currentQuestionIndex].respuesta === opcion
+                    ? 'selected'
+                    : 'default'}"
+                  on:click={() => updateResponse(opcion)}
+                >
+                  {opcion}
+                </button>
+              {/each}
+            </div>
+          {/if}
 
           {#if formData.preguntas[currentQuestionIndex].tipo === "fecha"}
             <input
@@ -244,11 +244,11 @@
               on:change={updateResponse}
             />
           {/if}
-          
         </div>
 
         <div class="flex justify-center space-x-4">
-          {#if currentQuestionIndex > 0 && !isSending} <!-- Agregado && !isSending -->
+          {#if currentQuestionIndex > 0 && !isSending}
+            <!-- Agregado && !isSending -->
             <button
               type="button"
               on:click={goToPreviousQuestion}
@@ -257,7 +257,8 @@
               {t.previous}
             </button>
           {/if}
-          {#if currentQuestionIndex < formData.preguntas.length - 1 && !isSending} <!-- Agregado && !isSending -->
+          {#if currentQuestionIndex < formData.preguntas.length - 1 && !isSending}
+            <!-- Agregado && !isSending -->
             <button
               type="button"
               on:click={goToNextQuestion}
@@ -265,32 +266,32 @@
             >
               {t.next}
             </button>
-      
           {/if}
         </div>
-        
+
         {#if currentQuestionIndex === formData.preguntas.length - 1}
-          {#if !isSending} <!-- Agregado !isSending -->
+          {#if !isSending}
+            <!-- Agregado !isSending -->
             <div class="flex justify-center mt-4">
               <button
                 type="button"
                 on:click={sendResponsesToAPI}
-                class="bg-[#32CD32] text-white px-8 py-2 rounded flex items-center justify-center"
+                class="bg-[#32CD32] text-white px-8 py-2 rounded-3xl flex items-center justify-center"
                 style="min-width: 200px;"
               >
                 {t.sendResponses}
               </button>
             </div>
           {/if}
-        
-          {#if isSending} <!-- Mantenido isSending -->
+
+          {#if isSending}
+            <!-- Mantenido isSending -->
             <div class="flex justify-center mt-4">
               <div class="spinner"></div>
               <span class="ml-2 text-white">{t.processing}</span>
             </div>
           {/if}
         {/if}
-        
       </form>
     {:else}
       <p class="text-white text-center">No se pudo cargar el formulario.</p>
@@ -309,18 +310,18 @@
   }
 
   @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
+
+  
   .selected {
-  background-color: #4caf50;
-  color: white;
-}
+    background-color: #4caf50;
+    color: white;
+  }
 
-.default {
-  background-color: black;
-  color: white;
-}
-
+  .default {
+    background-color: black;
+    color: white;
+  }
 </style>

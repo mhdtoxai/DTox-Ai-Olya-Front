@@ -9,6 +9,9 @@
   import Home from "./routes/Bienvenida/Home.svelte";
   import Pruebarespirar from "./routes/TestRespirar/Pruebarespirar.svelte";
   import Resultado from "./routes/TestRespirar/Resultado.svelte";
+  import FinEnc from "./routes/Fin/FinEnc.svelte";
+  import FinalEnc from "./routes/Fin/FinalEnc.svelte";
+
 </script>
 
 <Router>
@@ -27,6 +30,8 @@
     <Route path="/Pruebarespirar" component={Pruebarespirar} />
     <Route path="/Resultado" component={Resultado} />
     
-
+    <Route path="/FinEnc" component={FinEnc} />
+    <Route path="/FinalEnc" component={FinalEnc} />
+    
   </main>
 </Router>
